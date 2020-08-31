@@ -151,6 +151,7 @@ module.exports = (env = {}) => {
       historyApiFallback: true,
       proxy: {  //fullstack only
         "/api": { target: "http://localhost:4000", secure: false },
+        "/graphql": { target: "http://localhost:4000", secure: false },
         '/images': { target: 'http://localhost:4000', secure: false }
       },
       //hotOnly: true //optional
