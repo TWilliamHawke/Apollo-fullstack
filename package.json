@@ -9,8 +9,10 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "webpack --mode development",
     "start": "babel-watch ./src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "apollo:dl": "npm run apollo:dl --prefix client"
+    "apollo:dl": "npm run apollo:dl --prefix client",
+    "apollo:update": "npm run apollo:update --prefix client",
+    "test": "npm run test:watch --prefix client",
+    "test:o": "npm run test:onlyOnce --prefix client"
   },
   "keywords": [],
   "author": "",

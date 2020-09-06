@@ -8,7 +8,10 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "core/*": ["src/core/*"],
+      "layouts/*": ["src/layouts/*"],
+      "shared/*": ["src/shared/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

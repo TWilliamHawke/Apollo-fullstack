@@ -4,7 +4,7 @@ import {
   HttpLink
 } from '@apollo/client'
 
-const uri = 'http://localhost:4000/graphql'
+import { uri } from './config/links';
 
 const link = new HttpLink({
   uri,
@@ -12,8 +12,6 @@ const link = new HttpLink({
 
 export const client = new ApolloClient({
   link,
-  cache: new InMemoryCache({
-    
-  })
+  cache: new InMemoryCache()
 })
 

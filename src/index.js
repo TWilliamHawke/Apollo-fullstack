@@ -5,7 +5,7 @@ import { PORT } from './server/config'
 
 const schema = gql`
   type Query {
-    hello: String
+    hello: String!
   }
 `
 

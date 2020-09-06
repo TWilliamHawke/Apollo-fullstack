@@ -107,7 +107,10 @@ module.exports = (env = {}) => {
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
       alias: {
-        src: path.resolve(__dirname, 'src/')
+        src: path.resolve(__dirname, 'src/'),
+        shared: path.resolve(__dirname, 'src/shared/'),
+        layouts: path.resolve(__dirname, 'src/layouts/'),
+        core: path.resolve(__dirname, 'src/core/'),
       }
     },
 

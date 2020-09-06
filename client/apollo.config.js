@@ -1,8 +1,12 @@
 module.exports = {
-  service: {
-    client: {
-      name: 'github',
-      localSchemaFile: 'schema.json'
-    }
+  client: {
+    name: 'ApolloBlogClient',
+    service: {
+      name: 'ApolloBlog',
+      localSchemaFile: "./schema.json"
+    },
+    includes: ['**/*.ts'],
+    excludes: ['node_modules/**'],
+
   }
-}
+};
