@@ -1,21 +1,40 @@
-import { useQuery } from "@apollo/react-hooks"
-import { QUERY } from "./gql/createAccountMutation"
+import { useMutation } from "@apollo/react-hooks"
+import { createAccountMutation } from "./gql/createAccountMutation"
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
-import { testQuery } from "./gql/__generated__/testQuery"
+import { signUp, signUpVariables } from "./gql/__generated__/signUp"
+import { AuthDataType } from "layouts/Navbar/types/AuthFormTypes"
+import { useContext } from "react"
+import { GlobalStateContext } from "shared/store/GlobalState"
+import { FetchFailure } from "shared/store/actions"
 
 
 type CreateAccountData = {
   loading: boolean,
-  data: testQuery | undefined
+  createAccount: (data: AuthDataType) => void
 }
 
 const useCreateAccountMutation = (): CreateAccountData => {
-  const queryResult = useQuery<testQuery>(QUERY)
-  const { data, loading } = useApolloWithReducer(queryResult)
+  const [_signUp, querryData] = useMutation<signUp, signUpVariables>(createAccountMutation)
+  const { loading } = useApolloWithReducer(querryData)
+  const { dispatch } = useContext(GlobalStateContext)
+
+  const createAccount = async ({email, password, userName}: AuthDataType) => {
+    try {
+      await _signUp({
+        variables: {
+          email,
+          password,
+          username: userName
+        }
+      })
+    } catch(e) {
+      dispatch(FetchFailure(e?.message))
+    }
+  }
 
   return {
-    data,
-    loading
+    loading,
+    createAccount
   }
 }
 

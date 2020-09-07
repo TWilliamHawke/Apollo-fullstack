@@ -7,6 +7,7 @@ import { client } from '../client';
 
 import "./style.scss";
 import { GlobalStateProvider } from 'src/shared/store/GlobalState';
+import TopErrorMessage from 'layouts/TopErrorMessage/TopErrorMessage';
 
 
 
@@ -14,6 +15,7 @@ const App: FC = () => {
   return (
     <GlobalStateProvider>
       <ApolloProvider client={client}>
+        <TopErrorMessage />
         <Navbar />
         <div className="container">
           <h1>Hello World</h1>

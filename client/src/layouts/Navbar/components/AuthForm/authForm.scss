@@ -24,6 +24,9 @@ $auth-forn-height: 200px;
   input {
     font-size: 18px;
     flex-grow: 1;
+    &.green {
+      background-color: rgba(91, 182, 91, 0.534) !important;
+    }
   }
   &-button {
     display: block;

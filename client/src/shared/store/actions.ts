@@ -1,6 +1,4 @@
 import * as types from "./types";
-import { ApolloError } from "@apollo/react-hooks";
-
 
 export const fetchStart = (): types.ApolloFetchStartAction => {
   return {
@@ -14,10 +12,16 @@ export const fetchEnd = (): types.ApolloFetchSuccessAction => {
   }
 }
 
-export const FetchFailure = (payload: ApolloError): types.ApolloFetchFailureAction => {
+export const FetchFailure = (payload: string): types.ApolloFetchFailureAction => {
   return {
     type: types.APOLLO_FETCH_FAILURE,
     error: true,
     payload
+  }
+}
+
+export const clearGlobalErrors = (): types.ClearGlobalErrorAction => {
+  return {
+    type: types.CLEAR_GLOBAL_ERROR
   }
 }

@@ -1,9 +1,8 @@
-import { GlobalActionsType, APOLLO_FETCH_START, APOLLO_FETCH_FAILURE, APOLLO_FETCH_SUCCESS } from './types';
-import { ApolloError } from '@apollo/react-hooks';
+import { GlobalActionsType, APOLLO_FETCH_START, APOLLO_FETCH_FAILURE, APOLLO_FETCH_SUCCESS, CLEAR_GLOBAL_ERROR } from './types';
 
 export type GlobalStateType = {
   loading: boolean
-  errors?: ApolloError
+  errors?: string
 }
 
 export const defaultState: GlobalStateType = {
@@ -30,6 +29,11 @@ export const reducer = (state: GlobalStateType, action: GlobalActionsType): Glob
         ...state,
         loading: false,
         errors: action.payload
+      }
+    case CLEAR_GLOBAL_ERROR:
+      return {
+        ...state,
+        errors: undefined
       }
     default:
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

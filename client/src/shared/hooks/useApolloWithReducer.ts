@@ -1,11 +1,13 @@
-import { QueryResult } from '@apollo/react-hooks';
+import { QueryResult, MutationResult } from '@apollo/react-hooks';
 import { useEffect, useContext } from 'react';
 import { GlobalStateContext } from '../store/GlobalState';
-import { fetchStart, fetchEnd } from '../store/actions';
+import { fetchStart, fetchEnd, FetchFailure } from '../store/actions';
 
-export const useApolloWithReducer = <T>(queryData: QueryResult<T>): QueryResult<T> => {
+type ApolloWithReducer = <T>(querryData: QueryResult<T> | MutationResult<T>) => QueryResult<T> | MutationResult<T>
+
+export const useApolloWithReducer: ApolloWithReducer = (queryData) => {
   const { error, loading, ...otherdata } = queryData
-  const { dispatch, state } = useContext(GlobalStateContext)
+  const { dispatch } = useContext(GlobalStateContext)
 
   
 
@@ -19,12 +21,12 @@ export const useApolloWithReducer = <T>(queryData: QueryResult<T>): QueryResult<
 
   useEffect(() => {
     if(!error) return
-    console.log(error);
-  }, [error])
+    dispatch(FetchFailure(error.message));
+  }, [error, dispatch])
 
   return {
     ...otherdata,
-    error: state.errors,
+    error,
     loading
   }
 }

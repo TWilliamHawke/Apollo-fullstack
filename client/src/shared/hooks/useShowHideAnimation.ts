@@ -8,7 +8,7 @@ type useShowCloseAnimationType = {
 }
 
 type useShowCloseAnimationData = {
-  style: {animation: string}
+  style: {animation: string, transformOrigin: string}
   animationTrigger: () => void
   hideElement: () => void
 }
@@ -22,7 +22,8 @@ export const useShowHideAnimation = ({
   const [show, setShow] = useState(true)
 
   const style = {
-    animation: `${show ? showAnimation : hideAnimation} ${duration}s`
+    animation: `${show ? showAnimation : hideAnimation} ${duration}s`,
+    transformOrigin: 'top'
   }
 
   const animationTrigger = () => {
@@ -32,6 +33,7 @@ export const useShowHideAnimation = ({
   const hideElement = () => {
     if(show) return;
     action()
+    setShow(true)
   }
 
 

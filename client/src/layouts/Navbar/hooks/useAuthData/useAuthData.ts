@@ -1,14 +1,9 @@
 import { useState } from "react"
-
-type AuthDataType = {
-  email: string
-  password: string
-  userName: string
-}
+import { AuthDataType } from "layouts/Navbar/types/AuthFormTypes"
 
 type AuthData = {
   authData: AuthDataType,
-  changeData: (name: string, value: string) => void
+  changeData: (name: string, value: string) => void,
 }
 
 const useAuthData = (): AuthData => {
@@ -18,7 +13,7 @@ const useAuthData = (): AuthData => {
     userName: ''
   })
 
-  const changeData = (name: string, value: string) => {
+  const changeData = (name: string, value: string) => {    
     setAuthData(old => ({
       ...old,
       [name]: value
@@ -27,7 +22,7 @@ const useAuthData = (): AuthData => {
 
   return {
     authData,
-    changeData
+    changeData,
   }
 
 }
