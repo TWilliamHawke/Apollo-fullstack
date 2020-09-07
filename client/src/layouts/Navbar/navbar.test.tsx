@@ -11,5 +11,14 @@ describe('test navbar component', () => {
 
   it('should render correctly', () => {
     expect(wrapper.find('div').exists()).toBe(true)
+    expect(wrapper.find('AuthForm').exists()).toBe(false)
+
+  })
+
+
+  test('click should open authForm', () => {
+    const button = wrapper.find('li').first()
+    button.simulate('click')
+    expect(wrapper.find('AuthForm').exists()).toBe(true)
   })
 })

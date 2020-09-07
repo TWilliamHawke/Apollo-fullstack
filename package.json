@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:client",
+      "pre-push": "npm run lint:client"
+    }
+  },
   "scripts": {
     "client": "npm start --prefix client",
     "server": "babel-watch ./src/index.js",
@@ -12,7 +18,8 @@
     "apollo:dl": "npm run apollo:dl --prefix client",
     "apollo:update": "npm run apollo:update --prefix client",
     "test": "npm run test:watch --prefix client",
-    "test:o": "npm run test:onlyOnce --prefix client"
+    "test:o": "npm run test:onlyOnce --prefix client",
+    "lint:client": "npm run lint --prefix client"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +30,8 @@
     "babel-plugin-import-graphql": "^2.7.0",
     "babel-preset-latest-node": "^4.1.0",
     "babel-watch": "^7.0.0",
-    "concurrently": "^5.3.0"
+    "concurrently": "^5.3.0",
+    "husky": "^4.2.5"
   },
   "dependencies": {
     "apollo-server-express": "^2.17.0",

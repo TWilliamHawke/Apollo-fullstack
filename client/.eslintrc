@@ -11,7 +11,7 @@
     "jest": true
   },
   "extends": ["react-app", "plugin:jest/recommended"],
-  "plugins": ["jest", "html"],
+  "plugins": ["jest", "html", "@typescript-eslint"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", ".*.ts", ".*.tsx"],

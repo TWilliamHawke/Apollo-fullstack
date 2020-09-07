@@ -1,0 +1,64 @@
+$auth-forn-height: 200px;
+
+
+.auth-form {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgb(165, 165, 165);
+  // width: 300px;
+  // height: $auth-forn-height;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform-origin: top;
+  label {
+    margin-right: 8px;
+  }
+  fieldset {
+    padding: 3px;
+    margin-top: 5px;
+    display: flex;
+  }
+  input {
+    font-size: 18px;
+    flex-grow: 1;
+  }
+  &-button {
+    display: block;
+    margin: 0 auto;
+    padding: 2px 10px;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+  &-closeButton {
+   padding: 3px 8px;
+   align-self: flex-end;
+   margin: 0;
+   cursor: pointer;
+   display: block;
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(100%);
+    opacity: 100%;
+  }
+}
+
+@keyframes hide {
+  0% {
+    transform: scaleY(100%);
+    opacity: 100%;
+  }
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
