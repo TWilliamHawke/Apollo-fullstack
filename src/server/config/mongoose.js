@@ -1,0 +1,1 @@
+export const dbLink = 'mongodb+srv://twilliam:cf9nyvB3BOnHukte@cluster0.qhgcr.mongodb.net/APOLLO-BLOG?retryWrites=true&w=majority'

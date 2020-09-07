@@ -1,31 +1,21 @@
-import express from 'express'
-import { ApolloServer, gql } from 'apollo-server-express'
-
+import mongoose from 'mongoose';
+import { app, graphqlPath } from './server/app';
 import { PORT } from './server/config'
-
-const schema = gql`
-  type Query {
-    hello: String!
-  }
-`
+import { dbLink } from './server/config/mongoose';
 
 
-const resolvers = {
-  Query: {
-    hello: () => 'hello'
+const start = () => {
+  try {
+    mongoose.connect(dbLink, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+  
+    app.listen(PORT, () => console.log(`Server ready at http://localhost:${PORT}${graphqlPath}`))
+  } catch(e) {
+    console.log(e)
+    process.exit()
   }
 }
 
-const app = express()
-
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers
-})
-
-server.applyMiddleware({
-  app
-})
-
-
-app.listen(PORT, () => console.log(`Server ready at http://localhost:${PORT}${server.graphqlPath}`))
+start()
