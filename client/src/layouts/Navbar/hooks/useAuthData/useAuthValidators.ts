@@ -1,19 +1,20 @@
 import { AuthDataType, AuthDataValidationType } from "layouts/Navbar/types/AuthFormTypes"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { GlobalStateContext } from "shared/store/GlobalState"
 
 // type AuthValidator = (value: string) => boolean
-type AuthValidatorsHook = (data: AuthDataType) => {
+type AuthValidatorsHook = (data: AuthDataType, isLoginForm: boolean) => {
   authValidation: AuthDataValidationType
   formIsValid: boolean
-  loginIsValid: boolean
 }
 
 export const useAuthValidators: AuthValidatorsHook = (
-  {email, password, userName}) => {
+  {email, password, userName}, isLoginForm) => {
 
   const [emailValid, setEmailValid] = useState(false)
-  const [userNAmeValid, setUserNameValid] = useState(false)
+  const [userNameValid, setUserNameValid] = useState(false)
   const [passwordValid, setPasswordValid] = useState(false)
+  const { state: {loading} } = useContext(GlobalStateContext)
 
   useEffect(() => {
     setUserNameValid(userName.length > 1)
@@ -25,24 +26,18 @@ export const useAuthValidators: AuthValidatorsHook = (
 
   useEffect(() => {    
     setEmailValid(!!email.match(/\S+@\S+\.\S+/))
-    
   }, [email])
 
-  useEffect(() => {
-    console.log(emailValid);
-    
-  }, [emailValid])
-
-  const formIsValid = emailValid && passwordValid && userNAmeValid
-  const loginIsValid = emailValid && passwordValid
+  const signUpDataIsValid = emailValid && passwordValid && userNameValid && !loading
+  const loginIsValid = emailValid && passwordValid && !loading
+  const formIsValid = isLoginForm ? loginIsValid : signUpDataIsValid
   
   return {
     authValidation: {
       email: emailValid,
       password: passwordValid,
-      userName: userNAmeValid
+      userName: userNameValid
     },
     formIsValid,
-    loginIsValid
   }
 }

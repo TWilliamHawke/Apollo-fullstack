@@ -25,10 +25,23 @@ export type ClearGlobalErrorAction = {
   type: typeof CLEAR_GLOBAL_ERROR
 }
 
+export const SET_USER = 'SET_USER'
+export type SetUserAction = {
+  type: typeof SET_USER
+  payload: string
+}
+
+export const LOGOUT = 'LOGOUT';
+export type LogoutAction = {
+  type: typeof LOGOUT
+}
+
 export type GlobalActionsType = 
   ApolloFetchStartAction |
   ApolloFetchSuccessAction |
   ApolloFetchFailureAction |
-  ClearGlobalErrorAction
+  ClearGlobalErrorAction |
+  SetUserAction |
+  LogoutAction
 
 export type GrobalCreatorsType = () => GlobalActionsType

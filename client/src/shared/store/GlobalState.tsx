@@ -1,4 +1,4 @@
-import React, { createContext, FC, useReducer, Dispatch } from 'react';
+import React, { createContext, FC, useReducer, Dispatch, ReactNode } from 'react';
 import { reducer, defaultState, GlobalStateType } from './reducer';
 import { GlobalActionsType } from './types';
 
@@ -9,8 +9,12 @@ export const GlobalStateContext = createContext<{
   dispatch: Dispatch<GlobalActionsType>
 }>({state: defaultState, dispatch: () => {''}});
 
+type PorpTypes = {
+  children: ReactNode
+}
 
-export const GlobalStateProvider:FC = ({ children }) => {
+
+export const GlobalStateProvider:FC<PorpTypes> = ({ children }) => {
   
   const [state, dispatch] = useReducer(reducer, defaultState)
   

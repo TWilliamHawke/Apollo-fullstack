@@ -1,26 +1,39 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react'
 
 import './navbar.scss'
-import { AuthForm } from './components/AuthForm';
-import { useShowFormHandlers } from './hooks/useShowFormHandlers';
-
+import { AuthForm } from './components/AuthForm'
+import { useShowFormHandlers } from './hooks/useShowFormHandlers'
+import { GlobalStateContext } from 'shared/store/GlobalState'
+import { AuthButtons } from './components/AuthButtons'
+import { UserButtons } from './components/UserButtons'
 
 const Navbar: FC = () => {
-  const { loginClick, showForm, signUpClick, closeHandler} = useShowFormHandlers()
+  const { state } = useContext(GlobalStateContext)
+  const {
+    loginClick,
+    showForm,
+    signUpClick,
+    closeHandler,
+  } = useShowFormHandlers()
 
-  const formJSX = showForm && <AuthForm onClose={closeHandler} showing={showForm} />
+  const formJSX = showForm && (
+    <AuthForm onClose={closeHandler} showing={showForm} />
+  )
 
-  return(
-    <nav className='navbar'>
-      <div className='navbar-container'>
-        <ul className='navbar-buttons'>
-          <li
-            className={showForm === 'signUp' ? 'active' : ''}
-            onClick={signUpClick}>Sign Up</li>
-          <li
-            className={showForm === 'login' ? 'active' : ''}
-            onClick={loginClick}>Login</li>
-        </ul>
+  const buttonsJSX = state.user ? (
+    <UserButtons />
+  ) : (
+    <AuthButtons
+      showForm={showForm}
+      showLoginForm={loginClick}
+      showSignUpForm={signUpClick}
+    />
+  )
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        {buttonsJSX}
         {formJSX}
       </div>
     </nav>

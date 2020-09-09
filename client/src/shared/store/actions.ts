@@ -25,3 +25,16 @@ export const clearGlobalErrors = (): types.ClearGlobalErrorAction => {
     type: types.CLEAR_GLOBAL_ERROR
   }
 }
+
+export const setUser = (payload: string): types.SetUserAction => {
+  return {
+    type: types.SET_USER,
+    payload
+  }
+}
+
+export const logout = (): types.LogoutAction => {
+  return {
+    type: types.LOGOUT
+  }
+}

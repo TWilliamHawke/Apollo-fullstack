@@ -1,5 +1,6 @@
 import { ShowFormType } from "layouts/Navbar/types/NavbarTypes";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { GlobalStateContext } from "shared/store/GlobalState";
 
 type ShowFormHandlers = {
   showForm: ShowFormType,
@@ -11,7 +12,12 @@ type ShowFormHandlers = {
 
 const useShowFormHandlers = (): ShowFormHandlers => {
   const [showForm, setShowForm] = useState<ShowFormType>('');
+  const { state: { user } } = useContext(GlobalStateContext)
 
+  //hide authForm after login
+  useEffect(() => {
+    if(user) setShowForm('')
+  }, [user])
     
   const loginClick = () => {
     setShowForm('login')

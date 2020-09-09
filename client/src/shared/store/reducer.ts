@@ -1,8 +1,9 @@
-import { GlobalActionsType, APOLLO_FETCH_START, APOLLO_FETCH_FAILURE, APOLLO_FETCH_SUCCESS, CLEAR_GLOBAL_ERROR } from './types';
+import { GlobalActionsType, APOLLO_FETCH_START, APOLLO_FETCH_FAILURE, APOLLO_FETCH_SUCCESS, CLEAR_GLOBAL_ERROR, SET_USER, LOGOUT } from './types';
 
 export type GlobalStateType = {
   loading: boolean
   errors?: string
+  user?: string
 }
 
 export const defaultState: GlobalStateType = {
@@ -34,6 +35,16 @@ export const reducer = (state: GlobalStateType, action: GlobalActionsType): Glob
       return {
         ...state,
         errors: undefined
+      }
+    case SET_USER:
+      return {
+        ...state,
+        user: action.payload
+      }
+    case LOGOUT: 
+      return {
+        ...state,
+        user: ''
       }
     default:
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

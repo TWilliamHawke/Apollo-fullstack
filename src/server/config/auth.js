@@ -1,0 +1,1 @@
+export const USER_SECRET = 'another_user_secret'
