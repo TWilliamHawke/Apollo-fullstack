@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import App from './index'
+import { App } from './'
 
 // import { client } from '../client';
 
