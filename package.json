@@ -16,7 +16,7 @@
     "build": "webpack --mode development",
     "start": "babel-watch ./src/index.js",
     "apollo:dl": "npm run apollo:dl --prefix client",
-    "apollo:update": "npm run apollo:update --prefix client",
+    "apollo:u": "npm run apollo:update --prefix client",
     "test": "npm run test:watch --prefix client",
     "test:o": "npm run test:onlyOnce --prefix client",
     "lint:client": "npm run lint --prefix client"

@@ -1,29 +1,31 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-type useShowCloseAnimationType = {
+type ShowCloseAnimationInput = {
   showAnimation: string
-  hideAnimation: string,
-  duration: number,
+  hideAnimation: string
+  duration: number
   action: () => void
 }
 
-type useShowCloseAnimationData = {
-  style: {animation: string, transformOrigin: string}
-  animationTrigger: () => void
-  hideElement: () => void
+type ShowCloseAnimationOutput = {
+  style: { animation: string; transformOrigin: string }
+  onAnimationEnd: () => void
+  hideAnimationTrigger: () => void
 }
 
-export const useShowHideAnimation = ({
+type HookType = (data: ShowCloseAnimationInput) => ShowCloseAnimationOutput
+
+export const useShowHideAnimation: HookType = ({
   showAnimation,
   hideAnimation,
   duration,
-  action
-}: useShowCloseAnimationType): useShowCloseAnimationData => {
+  action,
+}) => {
   const [show, setShow] = useState(true)
 
   const style = {
     animation: `${show ? showAnimation : hideAnimation} ${duration}s`,
-    transformOrigin: 'top'
+    transformOrigin: 'top',
   }
 
   const animationTrigger = () => {
@@ -31,16 +33,14 @@ export const useShowHideAnimation = ({
   }
 
   const hideElement = () => {
-    if(show) return;
+    if (show) return
     action()
     setShow(true)
   }
 
-
   return {
     style,
-    animationTrigger,
-    hideElement
+    onAnimationEnd: hideElement,
+    hideAnimationTrigger: animationTrigger,
   }
-
 }

@@ -1,8 +1,12 @@
+#import "../components/post/types.gql"
+
 type Query {
   hello: String!
+  getAllPots: [Post]!
 }
 
 type Mutation {
-  signUp(userName: String, email: String, password: String): String!
-  login(email: String, password: String): String!
+  signUp(userName: String!, email: String!, password: String!): String!
+  login(email: String!, password: String!): String!
+  createPost(title: String!, content: String!, author: String!): ID!
 }

@@ -11,7 +11,7 @@ import TopErrorMessage from 'layouts/TopErrorMessage/TopErrorMessage';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from 'core/routes/Routes';
 import { ErrorBoundary } from 'shared/components/ErrorBoundary';
-
+import 'normalize.css'
 
 const App: FC = () => {
   return (

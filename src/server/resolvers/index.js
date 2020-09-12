@@ -1,8 +1,7 @@
 import { Mutation } from './mutation';
+import { Query } from './query';
 
 export const resolvers = {
-  Query: {
-    hello: () => 'hello'
-  },
+  Query,
   Mutation
 }

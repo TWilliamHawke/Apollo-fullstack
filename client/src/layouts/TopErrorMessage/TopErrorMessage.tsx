@@ -12,7 +12,7 @@ const TopErrorMessage: FC = () => {
     dispatch(clearGlobalErrors())
   }
 
-  const {animationTrigger, hideElement, style} = useShowHideAnimation({
+  const {onAnimationEnd, hideAnimationTrigger, style} = useShowHideAnimation({
     action: hideErrorMessage,
     duration: 0.3,
     hideAnimation: 'hide-top',
@@ -22,9 +22,9 @@ const TopErrorMessage: FC = () => {
   if(!state.errors) return null;
 
   return (
-    <div style={style} onAnimationEnd={hideElement} className='toperror'>
+    <div style={style} onAnimationEnd={onAnimationEnd} className='top-error'>
       {state.errors}
-      <button onClick={animationTrigger}>X</button>
+      <button onClick={hideAnimationTrigger}>X</button>
     </div>
   );
 };

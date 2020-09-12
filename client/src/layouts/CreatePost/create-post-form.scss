@@ -1,0 +1,35 @@
+.create-post-form {
+  &-field {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    text-align-last: left;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  &-input, &-area {
+    font-size: 20px;
+    width: 100%;
+    max-width: 700px;
+    padding: 2px;
+  }
+  &-label {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &-area {
+    resize: vertical;
+  }
+  &-btn {
+    background: rgb(99, 134, 207);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    // text-transform: uppercase;
+    border-radius: 3px;
+    font-size: 22px;
+  }
+}

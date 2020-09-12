@@ -4,15 +4,15 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL mutation operation: signUp
+// GraphQL mutation operation: CreateNewPost
 // ====================================================
 
-export interface signUp {
-  signUp: string;
+export interface CreateNewPost {
+  createPost: string;
 }
 
-export interface signUpVariables {
-  email: string;
-  password: string;
-  username: string;
+export interface CreateNewPostVariables {
+  title: string;
+  content: string;
+  author: string;
 }

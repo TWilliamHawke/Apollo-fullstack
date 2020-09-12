@@ -14,7 +14,7 @@ const MainPage: FC = () => {
 
   return (
     <div>
-      Recent Posts
+      <h1>Recent Posts</h1>
       <button onClick={gotoNewPost}>New Post</button>
       <h2 onClick={gotoPost}>Post #1</h2>
     </div>

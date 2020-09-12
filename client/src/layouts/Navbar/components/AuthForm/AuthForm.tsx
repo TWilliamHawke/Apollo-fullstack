@@ -33,7 +33,7 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
     changeData(name, value)
   }
 
-  const { style, animationTrigger, hideElement } = useShowHideAnimation({
+  const { style, onAnimationEnd, hideAnimationTrigger, } = useShowHideAnimation({
     action: onClose,
     duration: 0.3,
     showAnimation: 'show',
@@ -71,8 +71,8 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
   }
 
   return (
-    <div className="auth-form" style={style} onAnimationEnd={hideElement}>
-      <button onClick={animationTrigger} className="auth-form-closeButton">
+    <div className="auth-form" style={style} onAnimationEnd={onAnimationEnd}>
+      <button onClick={hideAnimationTrigger} className="auth-form-closeButton">
         Close
       </button>
       <form onSubmit={submitHandler}>
