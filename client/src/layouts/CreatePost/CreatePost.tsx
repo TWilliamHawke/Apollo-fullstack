@@ -23,11 +23,13 @@ const CreatePost: FC = () => {
   return (
     <>
       <h2>Create New Post</h2>
-      <form className='create-post-form' onSubmit={submitHandler}>
-        <fieldset className='create-post-form-field'>
-          <label className='create-post-form-label'  htmlFor="create-post-title">Title</label>
+      <form className="create-post-form" onSubmit={submitHandler}>
+        <fieldset className="create-post-form-field">
+          <label className="create-post-form-label" htmlFor="create-post-title">
+            Title
+          </label>
           <input
-          className='create-post-form-input'
+            className="create-post-form-input"
             type="text"
             value={postData.title}
             onChange={changeHandler}
@@ -35,19 +37,25 @@ const CreatePost: FC = () => {
             id="create-post-title"
           />
         </fieldset>
-        <fieldset className='create-post-form-field'>
-          <label className='create-post-form-label' htmlFor="create-post-content">Content</label>
+        <fieldset className="create-post-form-field">
+          <label
+            className="create-post-form-label"
+            htmlFor="create-post-content"
+          >
+            Content
+          </label>
           <textarea
-          className='create-post-form-area'
+            className="create-post-form-area"
             onChange={changeHandler}
             value={postData.content}
             name="content"
             id="create-post-content"
-            cols={30}
             rows={10}
           />
         </fieldset>
-        <button className='create-post-form-btn' type="submit">Publish</button>
+        <button className="create-post-form-btn" type="submit">
+          Publish
+        </button>
       </form>
     </>
   )

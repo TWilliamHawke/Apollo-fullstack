@@ -1,5 +1,9 @@
-import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { FC } from 'react'
+import { useHistory } from 'react-router-dom'
+import { Spinner } from 'shared/components/Spinner'
+import PostPreview from './components/PostPreview'
+import { useGetAllPostsQuery } from './hooks/useGetAllPostsQuery/useGetAllPostsQuery'
+import './mainPage.scss'
 
 const MainPage: FC = () => {
   const { push } = useHistory()
@@ -8,17 +12,35 @@ const MainPage: FC = () => {
     push('/newpost')
   }
 
-  const gotoPost = () => {
-    push('/posts/1')
-  }
+  const { loading, posts } = useGetAllPostsQuery()
+
+  if (loading) return <Spinner />
+
+  const postPreviewJSX = posts.map(({ _id, author, title, createdAt }) => {
+    return (
+      <PostPreview
+        key={_id}
+        id={_id}
+        createdAt={createdAt}
+        author={author}
+        title={title}
+      />
+    )
+  })
 
   return (
-    <div>
-      <h1>Recent Posts</h1>
-      <button onClick={gotoNewPost}>New Post</button>
-      <h2 onClick={gotoPost}>Post #1</h2>
+    <div className="main">
+      <div className="main-wrapper">
+        <h1 className='main-header'>Recent Posts</h1>
+        <div className="main-add">
+          <button className="main-btn" onClick={gotoNewPost}>
+            New Post
+          </button>
+        </div>
+      </div>
+      {postPreviewJSX}
     </div>
-  );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage

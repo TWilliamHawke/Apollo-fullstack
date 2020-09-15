@@ -1,36 +1,35 @@
-import { ShowFormType } from "layouts/Navbar/types/NavbarTypes";
-import { useState, useContext, useEffect } from "react";
-import { GlobalStateContext } from "shared/store/GlobalState";
+import {
+  ShowFormTrueType,
+  ShowFormType,
+} from 'layouts/Navbar/types/NavbarTypes'
+import { useState, useContext, useEffect } from 'react'
+import { GlobalStateContext } from 'shared/store/GlobalState'
 
 type ShowFormHandlers = {
-  showForm: ShowFormType,
-  loginClick: () => void
-  signUpClick: () => void
+  showForm: ShowFormType
   closeHandler: () => void
+  buttonsHandler: (name: ShowFormTrueType) => void
 }
 
-
 const useShowFormHandlers = (): ShowFormHandlers => {
-  const [showForm, setShowForm] = useState<ShowFormType>('');
-  const { state: { user } } = useContext(GlobalStateContext)
+  const [showForm, setShowForm] = useState<ShowFormType>('')
+  const {
+    state: { user },
+  } = useContext(GlobalStateContext)
 
-  //hide authForm after login
+  //hide form after login
   useEffect(() => {
-    if(user) setShowForm('')
+    if (user) setShowForm('')
   }, [user])
-    
-  const loginClick = () => {
-    setShowForm('login')
-  }
-  
-  const signUpClick = () => {
-    if(showForm === 'signUp') {
+
+  const buttonsHandler = (name: ShowFormTrueType) => {
+    if (showForm === name) {
       setShowForm('')
     } else {
-      setShowForm('signUp')
+      setShowForm(name)
     }
   }
-  
+
   const closeHandler = () => {
     setShowForm('')
   }
@@ -38,8 +37,7 @@ const useShowFormHandlers = (): ShowFormHandlers => {
   return {
     showForm,
     closeHandler,
-    signUpClick,
-    loginClick
+    buttonsHandler,
   }
 }
 

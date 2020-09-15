@@ -1,16 +1,16 @@
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import { FetchFailure } from "shared/store/actions"
 import { GlobalStateContext } from "shared/store/GlobalState"
 
 type errorHandlerType = {
-  errorHandler: (e: unknown) => void
+  errorHandler: (e: Error | string) => void
 }
 
 export const useErrorHandler = (): errorHandlerType => {
   const { dispatch } = useContext(GlobalStateContext)
 
 
-  const errorHandler = (e: unknown) => {
+  const errorHandler = (e: Error | string) => {
     if(e instanceof Error) {
       dispatch(FetchFailure(e.message))
     } else if (typeof e === 'string') {
@@ -21,6 +21,6 @@ export const useErrorHandler = (): errorHandlerType => {
   }
 
   return {
-    errorHandler
+    errorHandler: useCallback(errorHandler, [dispatch])
   }
 }

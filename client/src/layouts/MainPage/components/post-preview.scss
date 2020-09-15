@@ -1,0 +1,18 @@
+.postPreview {
+  border: 1px solid grey;
+  border-radius: 3px;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 5px 10px;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid #000;
+  }
+  &-info {
+    color: rgba(0, 0, 0, 0.65);
+    margin: 0;
+    font-size: 14px;
+  }
+}

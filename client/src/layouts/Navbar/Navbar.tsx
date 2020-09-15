@@ -10,10 +10,9 @@ import { UserButtons } from './components/UserButtons'
 const Navbar: FC = () => {
   const { state } = useContext(GlobalStateContext)
   const {
-    loginClick,
     showForm,
-    signUpClick,
     closeHandler,
+    buttonsHandler
   } = useShowFormHandlers()
 
   const formJSX = showForm && (
@@ -25,8 +24,7 @@ const Navbar: FC = () => {
   ) : (
     <AuthButtons
       showForm={showForm}
-      showLoginForm={loginClick}
-      showSignUpForm={signUpClick}
+      showhideForm={buttonsHandler}
     />
   )
 

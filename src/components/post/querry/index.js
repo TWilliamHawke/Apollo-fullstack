@@ -1,5 +1,7 @@
-import { getAllPots } from './getAllPots';
+import { getAllPosts } from './getAllPots';
+import { getPostById } from './getPostById';
 
 export const postQuery = {
-  getAllPots
+  getAllPosts,
+  getPostById
 }

@@ -16,6 +16,6 @@ export const sessionSettings = {
 };
 
 export const corsOptions = {
-  origin: `http://localhost:${PORT}`,
-  credentials: true
+  origin: 'http://localhost:5000',
+  credentials: true,
 }

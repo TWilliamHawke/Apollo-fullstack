@@ -3,9 +3,11 @@ import { resolvers } from './resolvers';
 import schema from './types.gql';
 
 
-
 export const apolloServer = new ApolloServer({
   typeDefs: schema,
-  resolvers
+  resolvers,
+  context: ({req, res}) => {
+    return {req, res}
+  }
 })
 

@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
-import { ApolloProvider } from '@apollo/client';
-
-import { Navbar } from 'src/layouts/Navbar';
-
-import { client } from '../client';
-
-import "./style.scss";
-import { GlobalStateProvider } from 'src/shared/store/GlobalState';
-import TopErrorMessage from 'layouts/TopErrorMessage/TopErrorMessage';
+//wrappers
 import { BrowserRouter } from 'react-router-dom';
-import Routes from 'core/routes/Routes';
+import { ApolloProvider } from '@apollo/client';
 import { ErrorBoundary } from 'shared/components/ErrorBoundary';
+import { GlobalStateProvider } from 'shared/store/GlobalState';
+//components
+import { Navbar } from 'layouts/Navbar';
+import { TopErrorMessage } from 'layouts/TopErrorMessage';
+import { Routes } from 'core/routes';
+//data
+import { client } from '../client';
+//styles
+import "./style.scss";
 import 'normalize.css'
+import './buttons.scss'
 
 const App: FC = () => {
   return (

@@ -1,23 +1,32 @@
 import React, { FC } from 'react';
+import { ShowFormTrueType } from '../../types/NavbarTypes';
 
 type PropTypes = {
-  showLoginForm: () => void
-  showSignUpForm: () => void
   showForm: string
+  showhideForm: (name: ShowFormTrueType) => void
 }
 
-const AuthButtons: FC<PropTypes> = ({showLoginForm, showSignUpForm, showForm}) => {
+const AuthButtons: FC<PropTypes> = ({ showForm, showhideForm }) => {
+
+  const showHideLogin = () => {
+    showhideForm('login')
+  }
+
+  const showHideSignUp = () => {
+    showhideForm('signUp')
+  }
+
   return (
   <ul className="navbar-buttons">
     <li
       className={showForm === 'signUp' ? 'active' : ''}
-      onClick={showSignUpForm}
+      onClick={showHideSignUp}
     >
       Sign Up
     </li>
     <li
       className={showForm === 'login' ? 'active' : ''}
-      onClick={showLoginForm}
+      onClick={showHideLogin}
     >
       Login
     </li>

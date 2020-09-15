@@ -1,20 +1,28 @@
-import React, { FC } from 'react';
-import { useParams } from 'react-router-dom';
-import { RouterParamsType } from 'shared/types/RouterTypes';
+import React, { FC } from 'react'
+import { Spinner } from 'shared/components/Spinner'
+import { dateTf } from 'shared/utils/dateTf'
+import { useGetThisPostQuery } from './hooks/useGetThisPostQuery/useGetThisPostQuery'
+import './post.scss'
 
 const Post: FC = () => {
-  const { post } = useParams<RouterParamsType>()
+  const { loading, postData } = useGetThisPostQuery()
+
+  if (loading || !postData) return <Spinner />
+
+  const { author, content, title, createdAt } = postData
+  const date = dateTf(createdAt)
 
   return (
-    <div>
-      <h1>Post #{post}</h1>
-      <p>
-        <span>post author</span>
-        <span>Created at: '19-09-2020'</span>
-      </p>
-      <p>Post body</p>
+    <div className='post'>
+      <p className='postPreview-info'>Posted by {author} at {date}</p>
+      <h1 className='post-header'>{title}</h1>
+      <p>{content}</p>
+      <div className='comments'>
+        <h2 className='comments-header'>Comments</h2>
+        <p className='comments__empty'>No comments yet</p>
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default Post;
+export default Post

@@ -1,11 +1,16 @@
-import React, { FC, ChangeEvent, FormEvent } from 'react'
-import { ShowFormTrueType } from '../../types/NavbarTypes'
+import React, { FC, FormEvent } from 'react'
+//components
+import { AuthField } from '../AuthField'
+//hooks
 import { useShowHideAnimation } from 'shared/hooks/useShowHideAnimation'
-import { useAuthData } from 'layouts/Navbar/hooks/useAuthData'
+import { useAuthData } from '../../hooks/useAuthData'
+import { useAuthValidators } from '../../hooks/useAuthData/useAuthValidators'
+import { useCreateAccountMutation } from '../../hooks/useCreateAccountMutation'
+import { useLoginMutation } from '../../hooks/useLoginMutation'
+//types
+import { ShowFormTrueType } from '../../types/NavbarTypes'
 import { InputsType } from '../../types/AuthFormTypes'
-import { useAuthValidators } from 'layouts/Navbar/hooks/useAuthData/useAuthValidators'
-import { useCreateAccountMutation } from 'layouts/Navbar/hooks/useCreateAccountMutation'
-import useLoginMutation from 'layouts/Navbar/hooks/useLoginMutation/useLoginMutation'
+//styles
 import './authForm.scss'
 
 type PropType = {
@@ -28,34 +33,11 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
     { title: 'Password', name: 'password', type: 'password' },
   ]
 
-  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    changeData(name, value)
-  }
-
   const { style, onAnimationEnd, hideAnimationTrigger, } = useShowHideAnimation({
     action: onClose,
     duration: 0.3,
     showAnimation: 'show',
     hideAnimation: 'hide',
-  })
-
-  const inputsJSX = inputs.map(({ title, name, type }) => {
-    if (isLoginForm && name === 'userName') return null
-
-    return (
-      <fieldset key={name}>
-        <label htmlFor={`auth-${name}`}>{title}</label>
-        <input
-          className={authValidation[name] ? 'green' : ''}
-          value={authData[name]}
-          onChange={inputHandler}
-          id={`auth-${name}`}
-          type={type}
-          name={name}
-        />
-      </fieldset>
-    )
   })
 
   const submitHandler = (e: FormEvent) => {
@@ -69,6 +51,21 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
       createAccount(authData)
     }
   }
+
+
+  const inputsJSX = inputs.map((inputData) => {
+    const { name } = inputData
+    if (isLoginForm && name === 'userName') return null
+
+    return <AuthField
+      key={name}
+      changeHandler={changeData}
+      inputClass={authValidation[name] ? 'green' : ''} 
+      inputValue={authData[name]}
+      inputData={inputData}
+      />
+  })
+
 
   return (
     <div className="auth-form" style={style} onAnimationEnd={onAnimationEnd}>
@@ -86,5 +83,6 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
     </div>
   )
 }
+
 
 export default AuthForm

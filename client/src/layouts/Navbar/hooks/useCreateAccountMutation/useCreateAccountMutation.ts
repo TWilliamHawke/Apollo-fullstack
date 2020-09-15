@@ -3,9 +3,7 @@ import { createAccountMutation } from "./gql/createAccountMutation"
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
 import { signUp, signUpVariables } from "./gql/__generated__/signUp"
 import { AuthDataType } from "layouts/Navbar/types/AuthFormTypes"
-import { useContext } from "react"
-import { GlobalStateContext } from "shared/store/GlobalState"
-import { FetchFailure } from "shared/store/actions"
+import { useErrorHandler } from "shared/hooks/useErrorHandler"
 
 
 type CreateAccountData = {
@@ -16,7 +14,7 @@ type CreateAccountData = {
 const useCreateAccountMutation = (): CreateAccountData => {
   const [_signUp, querryData] = useMutation<signUp, signUpVariables>(createAccountMutation)
   const { loading } = useApolloWithReducer(querryData)
-  const { dispatch } = useContext(GlobalStateContext)
+  const { errorHandler } = useErrorHandler();
 
   const createAccount = async ({email, password, userName}: AuthDataType) => {
     try {
@@ -28,7 +26,7 @@ const useCreateAccountMutation = (): CreateAccountData => {
         }
       })
     } catch(e) {
-      dispatch(FetchFailure(e?.message))
+      errorHandler(e)
     }
   }
 

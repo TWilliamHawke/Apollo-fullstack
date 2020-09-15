@@ -1,0 +1,24 @@
+.main {
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin: 0 auto;  
+  }
+  &-add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 710px) {
+  .main {
+    &-wrapper {
+      padding: 0 5px;
+    }
+    &-header {
+      font-size: 22px;
+    }
+  }
+}

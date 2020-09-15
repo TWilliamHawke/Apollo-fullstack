@@ -8,10 +8,16 @@ import { uri } from './config/links';
 
 const link = new HttpLink({
   uri,
+  //credentials: 'include',
+  // fetchOptions: {
+  //   mode: 'no-cors',
+  // },
 })
 
 export const client = new ApolloClient({
   link,
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    resultCaching: false
+  }),
 })
 

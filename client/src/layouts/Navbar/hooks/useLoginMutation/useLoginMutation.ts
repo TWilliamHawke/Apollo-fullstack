@@ -3,8 +3,9 @@ import { loginMutation } from "./gql/loginMutation"
 import { login, loginVariables } from "./gql/__generated__/login"
 import { useEffect, useContext } from "react"
 import { GlobalStateContext } from "shared/store/GlobalState"
-import { setUser, FetchFailure } from "shared/store/actions"
+import { setUser } from "shared/store/actions"
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
+import { useErrorHandler } from "shared/hooks/useErrorHandler"
 
 type LoginMutationType = {
   loginHandler: (data: loginVariables) => void
@@ -16,6 +17,7 @@ const useLoginMutation = ():LoginMutationType => {
   const [_login, querryData] = useMutation<login, loginVariables>(loginMutation)
   const { data } = useApolloWithReducer(querryData)
   const { dispatch } = useContext(GlobalStateContext)
+  const { errorHandler } = useErrorHandler();
 
   useEffect(() => {
     if(!data) return
@@ -28,7 +30,7 @@ const useLoginMutation = ():LoginMutationType => {
       await _login({variables: loginData})
 
     } catch (e) {
-      dispatch(FetchFailure(e.message))
+      errorHandler(e)
     }
   }
 
