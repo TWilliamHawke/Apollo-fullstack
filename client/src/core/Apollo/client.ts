@@ -4,7 +4,7 @@ import {
   HttpLink
 } from '@apollo/client'
 
-import { uri } from './config/links';
+import { uri } from 'core/config/links';
 
 const link = new HttpLink({
   uri,

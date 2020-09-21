@@ -4,7 +4,7 @@ import { App } from './'
 
 // import { client } from '../client';
 
-jest.mock('../client')
+jest.mock('../Apollo/client')
 //client.mockImplementation(() => {})
 // const mockedClient = <jest.Mock<SomeClass>>SomeClass;
 

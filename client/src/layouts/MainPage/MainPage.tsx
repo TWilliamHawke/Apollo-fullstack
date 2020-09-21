@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Spinner } from 'shared/components/Spinner'
 import PostPreview from './components/PostPreview'
-import { useGetAllPostsQuery } from './hooks/useGetAllPostsQuery/useGetAllPostsQuery'
+import { useGetAllPostsQuery } from './hooks/useGetAllPostsQuery'
 import './mainPage.scss'
 
 const MainPage: FC = () => {

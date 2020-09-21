@@ -3,12 +3,14 @@ import { useState, useEffect, useContext } from "react"
 import { GlobalStateContext } from "shared/store/GlobalState"
 
 // type AuthValidator = (value: string) => boolean
-type AuthValidatorsHook = (data: AuthDataType, isLoginForm: boolean) => {
+export type AuthValidatorInput = [a: AuthDataType, b: boolean]
+export type AuthValidatorOutPut = {
   authValidation: AuthDataValidationType
   formIsValid: boolean
 }
+type AuthValidatorsHook = (...args: AuthValidatorInput) => AuthValidatorOutPut
 
-export const useAuthValidators: AuthValidatorsHook = (
+const useAuthValidators: AuthValidatorsHook = (
   {email, password, userName}, isLoginForm) => {
 
   const [emailValid, setEmailValid] = useState(false)
@@ -41,3 +43,5 @@ export const useAuthValidators: AuthValidatorsHook = (
     formIsValid,
   }
 }
+
+export default useAuthValidators

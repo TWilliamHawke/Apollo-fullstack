@@ -1,13 +1,12 @@
-import React, { FC, useContext } from 'react';
-import { GlobalStateContext } from 'shared/store/GlobalState';
+import React, { FC } from 'react';
 import { clearGlobalErrors } from 'shared/store/actions'
 
 import './error-message.scss'
 import { useShowHideAnimation } from 'shared/hooks/useShowHideAnimation';
+import { useGlobalState } from 'shared/store/useGlobalState';
 
 const TopErrorMessage: FC = () => {
-  const { state, dispatch } = useContext(GlobalStateContext)
-
+  const { state, dispatch } = useGlobalState()
   const hideErrorMessage = () => {
     dispatch(clearGlobalErrors())
   }
@@ -23,7 +22,7 @@ const TopErrorMessage: FC = () => {
 
   return (
     <div style={style} onAnimationEnd={onAnimationEnd} className='top-error'>
-      {state.errors}
+      <div className="top-error-text">{state.errors}</div>
       <button onClick={hideAnimationTrigger}>X</button>
     </div>
   );

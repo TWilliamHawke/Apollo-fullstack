@@ -4,9 +4,8 @@ import { AuthField } from '../AuthField'
 //hooks
 import { useShowHideAnimation } from 'shared/hooks/useShowHideAnimation'
 import { useAuthData } from '../../hooks/useAuthData'
-import { useAuthValidators } from '../../hooks/useAuthData/useAuthValidators'
-import { useCreateAccountMutation } from '../../hooks/useCreateAccountMutation'
-import { useLoginMutation } from '../../hooks/useLoginMutation'
+import { useAuthValidators } from '../../hooks/useAuthValidators'
+import { useAuthSubmitHandler } from 'layouts/Navbar/hooks/useAuthSubmitHandler'
 //types
 import { ShowFormTrueType } from '../../types/NavbarTypes'
 import { InputsType } from '../../types/AuthFormTypes'
@@ -24,8 +23,7 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
   const { formIsValid, authValidation } = useAuthValidators(
     authData, isLoginForm
   )
-  const { createAccount } = useCreateAccountMutation()
-  const { loginHandler } = useLoginMutation()
+  const { authSubmitHandler } = useAuthSubmitHandler(isLoginForm)
 
   const inputs: InputsType = [
     { title: 'Email', name: 'email', type: 'text' },
@@ -44,12 +42,7 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
     e.preventDefault()
     //if wrong data - do nothing
     if(!formIsValid) return;
-
-    if(isLoginForm) {
-      loginHandler(authData)
-    } else {
-      createAccount(authData)
-    }
+    authSubmitHandler(authData)
   }
 
 
@@ -60,7 +53,7 @@ const AuthForm: FC<PropType> = ({ showing, onClose }) => {
     return <AuthField
       key={name}
       changeHandler={changeData}
-      inputClass={authValidation[name] ? 'green' : ''} 
+      inputClass={authValidation[name]} 
       inputValue={authData[name]}
       inputData={inputData}
       />

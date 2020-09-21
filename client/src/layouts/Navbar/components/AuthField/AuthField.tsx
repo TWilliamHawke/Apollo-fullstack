@@ -1,15 +1,16 @@
-import { FieldSetType } from 'layouts/Navbar/types/AuthFormTypes';
 import React, { ChangeEvent, FC } from 'react';
+import { FieldSetType } from 'layouts/Navbar/types/AuthFormTypes';
 
 type PropTypes = {
   inputData: FieldSetType
   changeHandler: (name: string, value: string) => void
-  inputClass: string
+  inputClass: boolean
   inputValue: string
 }
 
 const AuthField: FC<PropTypes> = ({inputData, changeHandler, inputClass, inputValue}) => {
-  const { name, title, type} = inputData
+  const { name, title, type } = inputData
+  const className = inputClass ? 'green' : ''
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -18,10 +19,10 @@ const AuthField: FC<PropTypes> = ({inputData, changeHandler, inputClass, inputVa
 
 
   return (
-    <fieldset key={name}>
+    <fieldset>
       <label htmlFor={`auth-${name}`}>{title}</label>
       <input
-        className={inputClass}
+        className={className}
         value={inputValue}
         onChange={inputHandler}
         id={`auth-${name}`}

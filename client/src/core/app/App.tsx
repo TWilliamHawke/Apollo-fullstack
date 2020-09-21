@@ -8,8 +8,8 @@ import { GlobalStateProvider } from 'shared/store/GlobalState';
 import { Navbar } from 'layouts/Navbar';
 import { TopErrorMessage } from 'layouts/TopErrorMessage';
 import { Routes } from 'core/routes';
-//data
-import { client } from '../client';
+//data for providers
+import { client } from '../Apollo/client';
 //styles
 import "./style.scss";
 import 'normalize.css'

@@ -4,6 +4,8 @@ import { Navbar } from './';
 
 jest.mock('./hooks/useCreateAccountMutation')
 
+jest.mock('shared/hooks/useUserData')
+
 
 describe('test navbar component', () => {
 
@@ -16,9 +18,7 @@ describe('test navbar component', () => {
   })
 
 
-  test('click should open authForm', () => {
-    const button = wrapper.find('li').first()
-    button.simulate('click')
-    expect(wrapper.find('AuthForm').exists()).toBe(true)
+  test('should render authButtons by default', () => {
+    expect(wrapper.find('AuthButtons').exists()).toBe(true)
   })
 })
