@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { clearGlobalErrors } from 'shared/store/actions'
 
 import './error-message.scss'
 import { useShowHideAnimation } from 'shared/hooks/useShowHideAnimation';
-import { useGlobalState } from 'shared/store/useGlobalState';
+import { GlobalStateContext } from 'shared/store/GlobalState';
 
 const TopErrorMessage: FC = () => {
-  const { state, dispatch } = useGlobalState()
+  const { state, dispatch } = useContext(GlobalStateContext)
   const hideErrorMessage = () => {
     dispatch(clearGlobalErrors())
   }

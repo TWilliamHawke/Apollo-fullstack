@@ -1,23 +1,11 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  HttpLink
-} from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { link } from './link';
 
-import { uri } from 'core/config/links';
-
-const link = new HttpLink({
-  uri,
-  //credentials: 'include',
-  // fetchOptions: {
-  //   mode: 'no-cors',
-  // },
-})
 
 export const client = new ApolloClient({
   link,
   cache: new InMemoryCache({
     resultCaching: false
-  }),
+  })
 })
 

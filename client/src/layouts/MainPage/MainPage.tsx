@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Spinner } from 'shared/components/Spinner'
-import PostPreview from './components/PostPreview'
+import { NewPostListener } from './components/NewPostListener'
+import { PostPreview } from './components/PostPreview'
 import { useGetAllPostsQuery } from './hooks/useGetAllPostsQuery'
 import './mainPage.scss'
 
@@ -12,7 +13,7 @@ const MainPage: FC = () => {
     push('/newpost')
   }
 
-  const { loading, posts } = useGetAllPostsQuery()
+  const { loading, posts, refetch } = useGetAllPostsQuery()
 
   if (loading) return <Spinner />
 
@@ -38,6 +39,7 @@ const MainPage: FC = () => {
           </button>
         </div>
       </div>
+      <NewPostListener handler={refetch} />
       {postPreviewJSX}
     </div>
   )

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { app, graphqlPath } from './server/app';
+import { graphqlPath, httpServer, subscriptionsPath } from './server/app';
 import { PORT } from './server/config'
 import { dbLink } from './server/config/mongoose';
 
@@ -11,7 +11,10 @@ const start = () => {
       useUnifiedTopology: true,
     })
   
-    app.listen(PORT, () => console.log(`Server ready at http://localhost:${PORT}${graphqlPath}`))
+    httpServer.listen(PORT, () => {
+      console.log(`Server ready at http://localhost:${PORT}${graphqlPath}`)
+      console.log(`Subscriptions ready at ws://localhost:${PORT}${subscriptionsPath}`)
+    })
   } catch(e) {
     console.log(e)
     process.exit()

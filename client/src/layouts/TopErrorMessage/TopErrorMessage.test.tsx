@@ -1,30 +1,26 @@
-import React from 'react';
+import React from 'react'
 import { shallow, ShallowWrapper } from 'enzyme'
-import TopErrorMessage from './TopErrorMessage';
-import * as hook from 'shared/store/useGlobalState';
+import TopErrorMessage from './TopErrorMessage'
 
 const dispatch = jest.fn()
 
-const hookMock = jest.spyOn(hook, 'useGlobalState')
-hookMock.mockImplementation(() => ({
+const contextSpy = jest.spyOn(React, 'useContext')
+contextSpy.mockImplementation(() => ({
   dispatch,
   state: {
     loading: false,
-    errors: 'testError'
+    errors: 'testError',
   },
 }))
-
 
 describe('test of TopErrorMessage', () => {
   let wrapper: ShallowWrapper
 
   beforeAll(() => {
-    wrapper = shallow(
-      <TopErrorMessage />
-    )
+    wrapper = shallow(<TopErrorMessage />)
   })
 
   test('render error message in div', () => {
-    expect(wrapper.find('.top-error-text').text()).toBe('testError') //added x 
+    expect(wrapper.find('.top-error-text').text()).toBe('testError') //added x
   })
 })

@@ -11,3 +11,7 @@ type Mutation {
   login(email: String!, password: String!): String!
   createPost(title: String!, content: String!, author: String!): ID!
 }
+
+type Subscription {
+  postCreated: Post!
+}

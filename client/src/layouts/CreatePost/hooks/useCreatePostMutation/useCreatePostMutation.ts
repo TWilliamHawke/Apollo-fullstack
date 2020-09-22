@@ -3,10 +3,10 @@ import { createPostMutation } from "./gql/createPostMutation"
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
 import { CreateNewPostVariables, CreateNewPost } from "./gql/__generated__/CreateNewPost"
 import { useContext, useEffect } from "react"
-import { GlobalStateContext } from "shared/store/GlobalState"
 import { CreatePostFormType } from "layouts/CreatePost/types/CreatePostTypes"
 import { useHistory } from "react-router-dom"
 import { useErrorHandler } from "shared/hooks/useErrorHandler"
+import { GlobalStateContext } from "shared/store/GlobalState"
 
 type CreatePostHook = () => {
   createPost: (postInput: CreatePostFormType) => void,
@@ -40,10 +40,12 @@ export const useCreatePostMutation: CreatePostHook = () => {
         errorMessage: 'Content is empty!'
       })
 
-      await _createpost({variables: {
-        author: state.user,
-        ...postInput
-      }})
+      await _createpost({
+        variables: {
+          author: state.user,
+          ...postInput
+        }
+      })
     } catch (e) {
       errorHandler(e)
     }

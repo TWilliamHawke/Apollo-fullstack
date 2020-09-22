@@ -1,4 +1,4 @@
-import { useQuery } from "@apollo/react-hooks"
+import { QueryResult, useQuery } from "@apollo/react-hooks"
 import { useParams } from "react-router-dom"
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
 import { getThisPostQuery } from "./gql/getThisPostQuery"
@@ -19,7 +19,7 @@ export const useGetThisPostQuery = (): GetThisPostQueryType => {
     { variables: { id: post } }
   )
 
-  const { loading, data } = useApolloWithReducer<GetThisPost>(
+  const { loading, data } = useApolloWithReducer<QueryResult<GetThisPost>>(
     queryData
   )
 

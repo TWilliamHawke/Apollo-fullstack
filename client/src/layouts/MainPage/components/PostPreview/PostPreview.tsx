@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
+//utils
 import { dateTf } from 'shared/utils/dateTf';
+//styles
 import './post-preview.scss'
 
 type PropTypes = {
