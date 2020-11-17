@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme'
 import Post from './Post';
-import * as hook from './hooks/useGetThisPostQuery/useGetThisPostQuery'
+import * as hook from './hooks/useGetThisPostQuery'
 
 const hookMock = jest.spyOn(hook, 'useGetThisPostQuery')
 hookMock.mockImplementation(() => ({

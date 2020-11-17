@@ -1,12 +1,12 @@
 import { useState } from "react"
-import { AuthDataType } from "layouts/Navbar/types/AuthFormTypes"
+import { AuthDataType } from "../types/AuthFormTypes"
 
 export type AuthDataHook = {
   authData: AuthDataType,
   changeData: (name: string, value: string) => void,
 }
 
-const useAuthData = (): AuthDataHook => {
+export const useAuthData = (): AuthDataHook => {
   const [authData, setAuthData] = useState<AuthDataType>({
     email: '',
     password: '',
@@ -26,5 +26,3 @@ const useAuthData = (): AuthDataHook => {
   }
 
 }
-
-export default useAuthData

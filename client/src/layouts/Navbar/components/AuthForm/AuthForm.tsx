@@ -5,7 +5,7 @@ import { AuthField } from '../AuthField'
 import { useShowHideAnimation } from 'shared/hooks/useShowHideAnimation'
 import { useAuthData } from '../../hooks/useAuthData'
 import { useAuthValidators } from '../../hooks/useAuthValidators'
-import { useAuthSubmitHandler } from 'layouts/Navbar/hooks/useAuthSubmitHandler'
+import { useAuthSubmitHandler } from '../../hooks/useAuthSubmitHandler'
 //types
 import { ShowFormTrueType } from '../../types/NavbarTypes'
 import { InputsType } from '../../types/AuthFormTypes'

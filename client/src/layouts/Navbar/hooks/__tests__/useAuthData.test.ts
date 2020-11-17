@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useAuthData, {AuthDataHook} from './useAuthData';
+import { AuthDataHook, useAuthData } from '../useAuthData';
 
 describe('testing of hook', () => {
 

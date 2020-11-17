@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
-//compnents
+//components
 import { AuthForm } from './components/AuthForm'
 import { AuthButtons } from './components/AuthButtons'
 import { UserButtons } from './components/UserButtons'
+//hooks
 import { useShowFormHandlers } from './hooks/useShowFormHandlers'
-import './navbar.scss'
 import { useUserData } from 'shared/hooks/useUserData'
+//styles
+import './navbar.scss'
 
 const Navbar: FC = () => {
   const { user } = useUserData();
@@ -18,7 +20,7 @@ const Navbar: FC = () => {
   const buttonsJSX = user ? (
     <UserButtons />
   ) : (
-    <AuthButtons showForm={showForm} showhideForm={buttonsHandler} />
+    <AuthButtons formName={showForm} showhideForm={buttonsHandler} />
   )
 
   return (

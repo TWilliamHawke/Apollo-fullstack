@@ -1,6 +1,6 @@
-import { AuthDataType, AuthDataValidationType } from "layouts/Navbar/types/AuthFormTypes"
 import { useState, useEffect, useContext } from "react"
 import { GlobalStateContext } from "shared/store/GlobalState"
+import { AuthDataType, AuthDataValidationType } from "../types/AuthFormTypes"
 
 // type AuthValidator = (value: string) => boolean
 export type AuthValidatorInput = [a: AuthDataType, b: boolean]
@@ -10,7 +10,7 @@ export type AuthValidatorOutPut = {
 }
 type AuthValidatorsHook = (...args: AuthValidatorInput) => AuthValidatorOutPut
 
-const useAuthValidators: AuthValidatorsHook = (
+export const useAuthValidators: AuthValidatorsHook = (
   {email, password, userName}, isLoginForm) => {
 
   const [emailValid, setEmailValid] = useState(false)
@@ -43,5 +43,3 @@ const useAuthValidators: AuthValidatorsHook = (
     formIsValid,
   }
 }
-
-export default useAuthValidators

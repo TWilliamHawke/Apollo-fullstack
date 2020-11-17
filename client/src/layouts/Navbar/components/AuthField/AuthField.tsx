@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FC } from 'react';
-import { FieldSetType } from 'layouts/Navbar/types/AuthFormTypes';
+import { FieldSetType } from '../../types/AuthFormTypes';
 
 type PropTypes = {
   inputData: FieldSetType

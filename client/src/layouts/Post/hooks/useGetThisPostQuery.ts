@@ -13,7 +13,6 @@ type GetThisPostQueryType = {
 export const useGetThisPostQuery = (): GetThisPostQueryType => {
   const { post } = useParams<RouterParamsType>()
 
-
   const queryData = useQuery<GetThisPost, GetThisPostVariables>(
     getThisPostQuery,
     { variables: { id: post } }

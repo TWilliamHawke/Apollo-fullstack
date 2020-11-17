@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Spinner } from 'shared/components/Spinner'
 import { dateTf } from 'shared/utils/dateTf'
-import { useGetThisPostQuery } from './hooks/useGetThisPostQuery/useGetThisPostQuery'
+import { useGetThisPostQuery } from './hooks/useGetThisPostQuery'
 import './post.scss'
 
 const Post: FC = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme'
 import CreatePost from './CreatePost';
-import * as apollohook from './hooks/useCreatePostMutation/useCreatePostMutation'
+import * as apollohook from './hooks/useCreatePostMutation'
 import * as fromHook from './hooks/usePostData'
 
 const createPost = jest.fn()

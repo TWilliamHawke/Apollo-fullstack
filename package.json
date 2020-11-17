@@ -11,7 +11,7 @@
   },
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "wait-on tcp:5000 && babel-watch ./src/index.js",
+    "server": "babel-watch ./src/index.js",
     "testServer": "wait-on tcp:5000 && babel-watch ./src/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "webpack --mode development",

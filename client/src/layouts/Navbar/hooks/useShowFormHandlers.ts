@@ -1,9 +1,8 @@
-import {
-  ShowFormTrueType,
-  ShowFormType,
-} from 'layouts/Navbar/types/NavbarTypes'
 import { useState, useContext, useEffect } from 'react'
+//context data
 import { GlobalStateContext } from 'shared/store/GlobalState'
+//types
+import { ShowFormTrueType, ShowFormType } from '../types/NavbarTypes'
 
 type ShowFormHandlers = {
   showForm: ShowFormType
@@ -11,7 +10,7 @@ type ShowFormHandlers = {
   buttonsHandler: (name: ShowFormTrueType) => void
 }
 
-const useShowFormHandlers = (): ShowFormHandlers => {
+export const useShowFormHandlers = (): ShowFormHandlers => {
   const [showForm, setShowForm] = useState<ShowFormType>('')
   const {
     state: { user },
@@ -40,5 +39,3 @@ const useShowFormHandlers = (): ShowFormHandlers => {
     buttonsHandler,
   }
 }
-
-export default useShowFormHandlers

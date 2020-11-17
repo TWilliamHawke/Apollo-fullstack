@@ -1,7 +1,7 @@
+import React from 'react'
 import { renderHook } from '@testing-library/react-hooks';
 import { AuthDataType } from 'layouts/Navbar/types/AuthFormTypes';
-import useAuthValidators from './useAuthValidators';
-import React from 'react'
+import { useAuthValidators } from '../useAuthValidators';
 
 const contestMock = jest.spyOn(React, 'useContext')
 contestMock.mockImplementation(() => ({ state: { loading: false } }))

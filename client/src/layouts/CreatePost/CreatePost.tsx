@@ -1,6 +1,6 @@
 import React, { FC, FormEvent } from 'react'
 import { usePostData } from './hooks/usePostData'
-import { useCreatePostMutation } from './hooks/useCreatePostMutation/useCreatePostMutation'
+import { useCreatePostMutation } from './hooks/useCreatePostMutation'
 import './create-post-form.scss'
 
 const CreatePost: FC = () => {

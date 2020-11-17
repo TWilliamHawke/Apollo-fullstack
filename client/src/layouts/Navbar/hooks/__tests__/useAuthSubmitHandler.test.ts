@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import useAuthSubmitHandler, { AuthSubmitHandlerHook } from './useAuthSubmitHandler';
+import { AuthSubmitHandlerHook, useAuthSubmitHandler } from '../useAuthSubmitHandler';
 import * as loginHook from '../useLoginMutation'
 import { AuthDataType } from 'layouts/Navbar/types/AuthFormTypes';
 import * as createHook from '../useCreateAccountMutation'

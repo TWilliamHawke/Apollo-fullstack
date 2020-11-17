@@ -1,11 +1,16 @@
 import { useMutation } from "@apollo/react-hooks"
-import { loginMutation } from "./gql/loginMutation"
-import { login, loginVariables } from "./gql/__generated__/login"
 import { useEffect, useContext } from "react"
+// context data
 import { GlobalStateContext } from "shared/store/GlobalState"
+//actions
 import { setUser } from "shared/store/actions"
+//hooks
 import { useApolloWithReducer } from "shared/hooks/useApolloWithReducer"
 import { useErrorHandler } from "shared/hooks/useErrorHandler"
+//gql
+import { loginMutation } from "./gql/loginMutation"
+//types
+import { login, loginVariables } from "./gql/__generated__/login"
 
 type LoginMutationType = {
   loginHandler: (data: loginVariables) => void
@@ -13,7 +18,7 @@ type LoginMutationType = {
 
 
 //
-const useLoginMutation = ():LoginMutationType => {
+export const useLoginMutation = ():LoginMutationType => {
   const [_login, querryData] = useMutation<login, loginVariables>(loginMutation)
   const { data } = useApolloWithReducer(querryData)
   const { dispatch } = useContext(GlobalStateContext)
