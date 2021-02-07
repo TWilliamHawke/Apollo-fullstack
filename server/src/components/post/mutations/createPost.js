@@ -1,6 +1,6 @@
 import { Post } from "../model"
 import { AuthenticationError } from "apollo-server-express"
-import { pubsub } from "../../../server/pubsub"
+import { pubsub } from "../../../core/pubsub"
 import { events } from "../events"
 
 export const createPost = async (_, data, { req }) => {

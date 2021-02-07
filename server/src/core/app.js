@@ -1,9 +1,9 @@
 import express from 'express'
-import { apolloServer } from './apolloServer'
-import cors from 'cors';
-import { corsOptions } from './config';
-import cookieParser from 'cookie-parser';
 import http from 'http';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { apolloServer } from './apolloServer'
+import { corsOptions } from './config';
 import { setUser } from './middleware/setUser';
 
 export const app = express()

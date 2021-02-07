@@ -1,4 +1,4 @@
-import { pubsub } from '../../../server/pubsub';
+import { pubsub } from '../../../core/pubsub';
 import { postEvents } from '../events';
 
 export const postSubscriptions = {

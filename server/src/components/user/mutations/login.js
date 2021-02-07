@@ -1,12 +1,12 @@
-import { User } from "../model";
 import { AuthenticationError, ApolloError } from "apollo-server-express";
 import bcryptjs from 'bcryptjs';
-import { USER_SECRET } from "../../../server/config/auth";
 import jwt from 'jsonwebtoken'
+import { User } from "../model";
+import { USER_SECRET } from "../../../core/config/auth";
 
 export const login = async (_, userData, { res }) => {
   try {
-    const {email, password } = userData;
+    const { email, password } = userData;
 
     const user = await User.findOne({email})
     if(!user) throw new AuthenticationError("User with this email doesn't exists!")

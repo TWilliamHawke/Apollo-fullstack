@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { graphqlPath, httpServer, subscriptionsPath } from './server/app';
-import { PORT } from './server/config'
-import { dbLink } from './server/config/mongoose';
+import { graphqlPath, httpServer, subscriptionsPath } from './core/app';
+import { PORT } from './core/config'
+import { dbLink } from './core/config/mongoose';
 
 
 const start = () => {
