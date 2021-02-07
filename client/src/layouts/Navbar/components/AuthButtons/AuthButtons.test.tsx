@@ -8,7 +8,7 @@ describe('test with loginForm is active', () => {
   let wrapper: ShallowWrapper
 
   beforeAll(() => {
-    wrapper = shallow(<AuthButtons showForm="login" showhideForm={handler}/>)
+    wrapper = shallow(<AuthButtons formName="login" showhideForm={handler}/>)
   })
 
   test('active button is login button', () => {
@@ -23,7 +23,7 @@ describe('test with Sign up form is active', () => {
   let wrapper: ShallowWrapper
 
   beforeAll(() => {
-    wrapper = shallow(<AuthButtons showForm="signUp" showhideForm={handler}/>)
+    wrapper = shallow(<AuthButtons formName="signUp" showhideForm={handler}/>)
   })
 
   test('active button is signUp button', () => {

@@ -14,7 +14,8 @@
     "test:onlyOnce": "jest",
     "lint:ts": "eslint ./src/**/*.{tsx,ts}",
     "lint": "npm run typescript && npm run lint:ts",
-    "typescript": "tsc"
+    "typescript": "tsc",
+    "lint:client": "npm run lint"
   },
   "keywords": [],
   "author": "",
