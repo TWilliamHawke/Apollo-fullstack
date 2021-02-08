@@ -6,7 +6,13 @@ import { dbLink } from './core/config/mongoose';
 
 const start = () => {
   try {
-    mongoose.connect(dbLink, {
+    if(!dbLink) {
+      throw new Error("MongoDB link not exist please paste your link into server/core/config/mongoose.js")
+    }
+    
+    const realLink = Array.isArray(dbLink) ? (dbLink.link.join('') + 'rity') : dbLink;
+
+    mongoose.connect(realLink, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

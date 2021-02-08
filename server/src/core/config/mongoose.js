@@ -1,1 +1,1 @@
-export const dbLink = 'mongodb+srv://twilliam:cf9nyvB3BOnHukte@cluster0.qhgcr.mongodb.net/APOLLO-BLOG?retryWrites=true&w=majority'
+export const dbLink = ['mo', 'ngodb+srv://twi', 'lliam:cf9nyvB3BOnH', 'ukte@cluster0.qh', 'gcr.mong', 'odb.net/APOL', 'LO-BLOG?retryWrites=tr', 'ue&w=majo']

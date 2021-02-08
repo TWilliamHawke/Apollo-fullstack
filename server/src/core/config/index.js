@@ -1,6 +1,5 @@
 export const PORT = 4000;
-export const USER_SECRET = 'another_user_secret'
-export const dbLink = 'mongodb+srv://twilliam:cf9nyvB3BOnHukte@cluster0.qhgcr.mongodb.net/APOLLO-BLOG?retryWrites=true&w=majority'
+import { USER_SECRET } from './auth';
 
 export const sessionSettings = {
   key: 'token',
